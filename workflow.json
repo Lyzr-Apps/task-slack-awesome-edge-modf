@@ -1,0 +1,55 @@
+{
+  "workflow": {
+    "nodes": [
+      {
+        "id": "input_node",
+        "type": "Input",
+        "label": "Task List Input",
+        "nodeCategory": "input"
+      },
+      {
+        "id": "slack_task_sender",
+        "type": "Agent",
+        "label": "Slack Task Sender Agent",
+        "nodeCategory": "agent",
+        "agent_id": "69a03199784e34bde20926c3",
+        "agent_name": "Slack Task Sender Agent",
+        "description": "Receives the current task list from the UI, formats it into a well-structured readable Slack message (with status indicators, priorities, and summary), and posts it to the #slack-test channel",
+        "provider_id": "openai",
+        "model": "gpt-4.1",
+        "temperature": 0.3,
+        "top_p": 1,
+        "tool_configs": [
+          {
+            "tool_name": "slack",
+            "tool_source": "composio",
+            "action_names": ["SLACK_CHAT_POST_MESSAGE", "SLACK_FIND_CHANNELS"],
+            "persist_auth": true,
+            "server_id": "",
+            "provider_uuid": "6980d819100ddff45dec4e81",
+            "credential_id": ""
+          }
+        ],
+        "image_output_config": null,
+        "voice_config": null,
+        "file_output": false
+      },
+      {
+        "id": "output_node",
+        "type": "Output",
+        "label": "Slack Response",
+        "nodeCategory": "end"
+      }
+    ],
+    "edges": [
+      {
+        "source": "input_node",
+        "target": "slack_task_sender"
+      },
+      {
+        "source": "slack_task_sender",
+        "target": "output_node"
+      }
+    ]
+  }
+}

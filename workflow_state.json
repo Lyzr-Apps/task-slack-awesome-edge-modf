@@ -1,0 +1,27 @@
+{
+  "agents": [
+    {
+      "agent_id": "69a03199784e34bde20926c3",
+      "agent_name": "Slack Task Sender Agent",
+      "node_id": "slack_task_sender",
+      "provider_id": "openai",
+      "model": "gpt-4.1",
+      "temperature": 0.3,
+      "top_p": 1,
+      "tool_configs": [
+        {
+          "tool_name": "slack",
+          "tool_source": "composio",
+          "action_names": ["SLACK_CHAT_POST_MESSAGE", "SLACK_FIND_CHANNELS"],
+          "persist_auth": true
+        }
+      ],
+      "image_output_config": null,
+      "voice_config": null,
+      "file_output": false,
+      "response_schema_file": "response_schemas/slack_task_sender_agent_response.json"
+    }
+  ],
+  "rag_ids": [],
+  "schedules": []
+}

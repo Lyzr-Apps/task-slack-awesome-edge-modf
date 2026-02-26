@@ -1,0 +1,24 @@
+{
+  "agent_name": "Slack Task Sender Agent",
+  "agent_id": "69a03199784e34bde20926c3",
+  "description": "Receives the current task list from the UI, formats it into a well-structured readable Slack message (with status indicators, priorities, and summary), and posts it to the #slack-test channel",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "status": "string",
+    "message": "string",
+    "channel": "string",
+    "tasks_sent": "number",
+    "completed_count": "number",
+    "pending_count": "number"
+  },
+  "example_response": {
+    "status": "Success or error status of the Slack send operation",
+    "message": "Human-readable confirmation or error message",
+    "channel": "The Slack channel the message was posted to",
+    "tasks_sent": 0,
+    "completed_count": 0,
+    "pending_count": 0
+  }
+}
